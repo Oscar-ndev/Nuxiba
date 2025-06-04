@@ -1,6 +1,6 @@
 # Evaluación Técnica 
 
-## 📦 Requisitos
+## Requisitos
 
 - .NET SDK 8
 - Docker (para levantar SQL Server)
@@ -9,16 +9,16 @@
 
 ---
 
-## 🐳 Configurar SQL Server con Docker
+## Configurar SQL Server con Docker
 
-Ejecuta el siguiente comando en tu terminal para levantar una instancia de SQL Server en Docker:
+Ejecutar el siguiente comando en la terminal para levantar una instancia de SQL Server:
 
 ```bash
 docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=YourStrong!Passw0rd" \
   -p 1433:1433 --name sqlserver -d mcr.microsoft.com/mssql/server:2019-latest
 ```
 
-Conéctate a:
+Conéctarse con las siguientes credenciales:
 
 - **Servidor**: `localhost,1433`
 - **Usuario**: `sa`
@@ -26,10 +26,10 @@ Conéctate a:
 
 ---
 
-## 🔧 Configurar la base de datos
+## Configurar la base de datos
 
-1. Clona este repositorio
-2. Asegúrate de que la cadena de conexión en `appsettings.json` apunte a tu contenedor:
+1. Clonar repositorio
+2. Verificar que la cadena de conexión en `appsettings.json` apunte al contenedor:
 
 ```json
 "ConnectionStrings": {
@@ -37,7 +37,7 @@ Conéctate a:
 }
 ```
 
-3. Ejecuta las migraciones para crear las tablas:
+3. Ejecutar las migraciones para crear las tablas:
 
 ```bash
 dotnet ef database update
@@ -45,7 +45,7 @@ dotnet ef database update
 
 ---
 
-## 🚀 Ejecutar la API
+## Ejecutar la API
 
 Desde Visual Studio o la terminal:
 
@@ -53,15 +53,9 @@ Desde Visual Studio o la terminal:
 dotnet run
 ```
 
-Esto abrirá **Swagger UI** en tu navegador en:
-
-```
-https://localhost:xxxx/swagger
-```
-
 ---
 
-## 📚 Endpoints implementados
+## Endpoints implementados
 
 ### `GET /api/login`
 Devuelve todos los registros de logins/logouts.
@@ -87,9 +81,9 @@ Genera un archivo CSV descargable con:
 
 ---
 
-## 📊 Consultas SQL desarrolladas
+## Consultas SQL desarrolladas
 
-### 🔹 Consulta 1 – Usuario que más tiempo ha estado logueado
+### Consulta 1 – Usuario que más tiempo ha estado logueado
 
 ```sql
 WITH ParesLoginLogout AS (
@@ -136,7 +130,7 @@ ORDER BY TotalSegundos DESC;
 
 Devuelve el `User_id` con mayor tiempo acumulado (en días, horas, minutos, segundos).
 
-### 🔹 Consulta 2 – Usuario que menos tiempo ha estado logueado
+### Consulta 2 – Usuario que menos tiempo ha estado logueado
 
 ```sql
 WITH ParesLoginLogout AS (
